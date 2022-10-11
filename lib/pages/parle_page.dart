@@ -491,6 +491,7 @@ class _ParleState extends State<Parle> {
             onPressed: habilitarBtn()
                 ? () {
                     setState(() {
+                      control.setParle(number1, number2, jugada);
                       _reset();
                     });
                   }

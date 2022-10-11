@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/cambiar_user_page.dart';
 import 'package:flutter_application_1/provider/provider_data.dart';
+import 'package:flutter_application_1/provider/subir_lista.dart';
 import 'package:get/get.dart';
 
 class NoEnv extends StatefulWidget {
@@ -26,7 +28,10 @@ class _NoEnvState extends State<NoEnv> {
 
     //print("Los parametros en formato map ${parametros}");
     //print(parametros["key"]);
-    firma_jugadas = parametros["key"];
+
+    //firma_jugadas = parametros["key"];
+    firma_jugadas = "hola";
+
     //print(parametros["key"]);
     //final k = parametros['key'];
 
@@ -51,7 +56,9 @@ class _NoEnvState extends State<NoEnv> {
                 icon: Icon(Icons.share_rounded),
                 color: Colors.white),
             IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  _subir();
+                },
                 icon: Icon(Icons.open_in_new_rounded),
                 color: Colors.white),
             IconButton(
@@ -128,25 +135,30 @@ class _NoEnvState extends State<NoEnv> {
         width: double.infinity,
         height: _screenSize.height * 0.76,
         child: ListView.builder(
-          itemCount: control.listaSinConexion.length,
+          itemCount: 2,
+          //itemCount: control.number.length,
           itemBuilder: (BuildContext context, int index) {
-            return _jugadas(index);
+            return _jugadasCompuesta(index);
+            //return Text("h");
           },
         ));
   }
 
-  Widget _jugadasSimpel(String n, String f, String c) {
-    if (n.length == 1) {
-      n = "0" + n;
+  Widget _jugadasSimpel(int index) {
+    //print(index);
+    //control.sumarApuesta();
+    /*  if (control.number[index].toString().length == 1) {
+      control.number[index]= "0" + control.number[index];
     } else
-      n = n;
+      control.number[index] = control.number[index]; */
+
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       width: double.infinity,
       child: Row(
         children: <Widget>[
           Text(
-            n,
+            control.number[index].toString(),
             style: TextStyle(
                 color: Colors.black, fontWeight: FontWeight.bold, fontSize: 25),
           ),
@@ -167,7 +179,9 @@ class _NoEnvState extends State<NoEnv> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(f),
+                Text(
+                  control.fijo[index].toString(),
+                ),
               ],
             ),
           ),
@@ -188,7 +202,9 @@ class _NoEnvState extends State<NoEnv> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(c),
+                Text(
+                  control.corrido[index].toString(),
+                ),
               ],
             ),
           ),
@@ -197,7 +213,7 @@ class _NoEnvState extends State<NoEnv> {
     );
   }
 
-  Widget _jugadasCompuesta() {
+  Widget _jugadasCompuesta(int index) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       width: double.infinity,
@@ -206,14 +222,14 @@ class _NoEnvState extends State<NoEnv> {
           Column(
             children: [
               Text(
-                "22",
+                control.numberP1[index].toString(),
                 style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
                     fontSize: 25),
               ),
               Text(
-                "55",
+                control.numberP2[index].toString(),
                 style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
@@ -232,7 +248,7 @@ class _NoEnvState extends State<NoEnv> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("5000"),
+                Text(control.betP[index].toString()),
               ],
             ),
           ),
@@ -284,7 +300,13 @@ class _NoEnvState extends State<NoEnv> {
     // print(ll[0]);
   }
 
-  Widget _jugadas(int index) {
+  void _subir() {
+    print("sube");
+    SubirFijoCorrido()
+        .fijo_corrido(control.number, control.fijo, control.corrido);
+  }
+
+  /*  Widget _jugadas(int index) {
     index++;
     List<List<String>> valor = [];
     var tipoJugada;
@@ -305,9 +327,9 @@ class _NoEnvState extends State<NoEnv> {
           color: Colors.white,
           child: _selectJugada(tipoJugada));
     }
-  }
+  } */
 
-  Widget _selectJugada(tipoJugada) {
+  /* Widget _selectJugada(tipoJugada) {
     if (tipoJugada[0] == "s") {
       number = tipoJugada[1];
       fijo = tipoJugada[2];
@@ -322,5 +344,5 @@ class _NoEnvState extends State<NoEnv> {
 
       return Text("Parle");
     }
-  }
+  } */
 }

@@ -17,8 +17,11 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    rulesProvider.rules();
-    rulesProvider.rulesSesion();
+    //rulesProvider.rules();
+
+    // print("las respuesta desde el home  ${res.}");
+
+    //rulesProvider.rulesSesion();
     rulesProvider.listOpen();
 
     return Scaffold(
@@ -39,7 +42,220 @@ class HomePage extends StatelessWidget {
             ],
           ),
         ),
-        body: Padding(
+        body: FutureBuilder(
+            future: rulesProvider.rules(),
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(child: CircularProgressIndicator());
+              } else {
+                //control.getlimiteFijo(snapshot.data["fijo_limit"]);
+
+                return Padding(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 20.0, horizontal: 10.0),
+                  child: ListView(
+                    children: [
+                      Card(
+                        elevation: 10.0,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0)),
+                        child: Column(
+                          children: <Widget>[
+                            SizedBox(height: 15.0),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Montar Lista",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 22.0,
+                                      color: Color.fromARGB(
+                                        255,
+                                        33,
+                                        150,
+                                        235,
+                                      )),
+                                ),
+                              ],
+                            ),
+                            _option(
+                                "Bolas",
+                                "El Fijo por ${snapshot.data["fijo_pay"]} cup.Corrido por  ${snapshot.data["corrido_pay"]} cup",
+                                Icon(Icons.lens_blur_outlined),
+                                context,
+                                "bola"),
+                            _lineaDividir(),
+                            _option(
+                                "Parle",
+                                "El Parle se paga ${snapshot.data["parle_pay"]} cup por peso",
+                                Icon(Icons.control_point_sharp),
+                                context,
+                                "parle"),
+                            _lineaDividir(),
+                            _option("Candado", "Jugar en Candado",
+                                Icon(Icons.lock_open), context, "candado"),
+                            _lineaDividir(),
+                            _option(
+                                "Centena",
+                                "Se paga a ${snapshot.data["centena_pay"]} por peso",
+                                Icon(Icons.hdr_weak_rounded),
+                                context,
+                                "centena"),
+                            _lineaDividir(),
+                            _option(
+                                "Terminal",
+                                "Jugar toods los terminales",
+                                Icon(Icons.password_sharp),
+                                context,
+                                "terminal"),
+                            _lineaDividir(),
+                            _option(
+                                "Decenas",
+                                "Jugar toods las decenas",
+                                Icon(Icons.device_hub_rounded),
+                                context,
+                                "decena"),
+                            _lineaDividir(),
+                            _option(
+                                "Multiple",
+                                "Jugar multiple",
+                                Icon(Icons.multiple_stop_outlined),
+                                context,
+                                "multiple"),
+                            SizedBox(height: 15.0),
+                          ],
+                        ),
+                      ),
+                      Card(
+                        elevation: 10.0,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0)),
+                        child: Column(
+                          children: <Widget>[
+                            SizedBox(height: 15.0),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Mis Listas",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 22.0,
+                                      color: Color.fromARGB(
+                                        255,
+                                        33,
+                                        150,
+                                        235,
+                                      )),
+                                ),
+                              ],
+                            ),
+                            _option(
+                                "Resumen",
+                                "Limpio, Premio, Pierde y Gana",
+                                Icon(Icons.restore_page_rounded),
+                                context,
+                                "resumen"),
+                            _lineaDividir(),
+                            _option("Enviadas", "Buscar lista  enviadas",
+                                Icon(Icons.send), context, "enviadas"),
+                            _lineaDividir(),
+                            _option("Sin Enviar", "Tu lista de hoy",
+                                Icon(Icons.segment_rounded), context, "noEnv"),
+                            _lineaDividir(),
+                            _option(
+                                "Almacenamiento",
+                                "Lista y vales guardados en el telefono",
+                                Icon(Icons.storage_rounded),
+                                context,
+                                "almacenamiento"),
+                            SizedBox(height: 15.0),
+                          ],
+                        ),
+                      ),
+                      Card(
+                        elevation: 10.0,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0)),
+                        child: Column(
+                          children: <Widget>[
+                            SizedBox(height: 15.0),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Limitados",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 22.0,
+                                      color: Color.fromARGB(
+                                        255,
+                                        33,
+                                        150,
+                                        235,
+                                      )),
+                                ),
+                              ],
+                            ),
+                            _option(
+                                "Bola",
+                                "Limitados de la bola del dia y la noche: El fijo a ${snapshot.data["fijo_limited_pay"]} cup, el corrido a ${snapshot.data["corrido_limited_pay"]} cup, la centena a ${snapshot.data["centena_limited_pay"]} cup,",
+                                Icon(Icons.label_important_outline_sharp),
+                                context,
+                                "limitarB"),
+                            _lineaDividir(),
+                            _option(
+                                "Parle",
+                                "Limita la parle del dia y la noche: El parle a ${snapshot.data["parle_limited_pay"]} ",
+                                Icon(Icons.label_important_outlined),
+                                context,
+                                "limitarP"),
+                            SizedBox(height: 15.0),
+                          ],
+                        ),
+                      ),
+                      Card(
+                        elevation: 10.0,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0)),
+                        child: Column(
+                          children: <Widget>[
+                            SizedBox(height: 15.0),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Usuario",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 22.0,
+                                      color: Color.fromARGB(
+                                        255,
+                                        33,
+                                        150,
+                                        235,
+                                      )),
+                                ),
+                              ],
+                            ),
+                            _option(
+                                "Cambia tu clave",
+                                "Edita la clave del trabajador",
+                                Icon(Icons.key, size: 30),
+                                context,
+                                "usuario"),
+                            SizedBox(height: 15.0),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }
+            })
+
+        /*  Padding(
           padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
           child: ListView(
             children: [
@@ -211,7 +427,8 @@ class HomePage extends StatelessWidget {
               ),
             ],
           ),
-        ));
+        ) */
+        );
   }
 
   Widget _option(String titulo, String subtitulo, Icon icono,

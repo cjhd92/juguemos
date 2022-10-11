@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter_application_1/provider/provider_data.dart';
+import 'package:flutter_application_1/util/util.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -22,9 +23,9 @@ class _BolaState extends State<Bola> {
   bool selecF = false;
   bool selecC = false;
 
-  List<String> numeros = [];
-  List<String> fijos = [];
-  List<String> corridos = [];
+  //List<String> numeros = [];
+  /* List<String> fijos = [];
+  List<String> corridos = []; */
 
   final control = Get.find<Crontrol>();
 
@@ -535,13 +536,24 @@ class _BolaState extends State<Bola> {
             onPressed: habilitarBtn()
                 ? () {
                     setState(() {
+                      //_validarReglas();
                       _generarKey();
                       //jugada.add("s");
-                      numeros.add(number);
-                      fijos.add(fijo);
-                      corridos.add(corrido);
+                      //numeros.add(number);
 
-                      control.getJugada(number);
+                      /*   print("numero añadido ${number}");
+                      print("fijo añadido ${fijo}");
+                      print("corrrido añadido ${corrido}"); */
+
+                      control.setnumber(number);
+                      control.setfijo(fijo);
+                      control.setcorrido(corrido);
+                      _suma(fijo, corrido);
+
+                      /* fijos.add(fijo);
+                      corridos.add(corrido); */
+
+                      //control.getJugada(number);
                       /* control.getJugada(fijos);
                       control.getJugada(corridos); */
                       _reset();
@@ -589,7 +601,8 @@ class _BolaState extends State<Bola> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Icon(Icons.monetization_on_sharp),
-                Text('8500.00'),
+                //Text(control.sumarApuesta().toString()),
+                Text(control.sumaTotal.toString() + ".0"),
               ],
             ),
           ),
@@ -709,4 +722,21 @@ class _BolaState extends State<Bola> {
         return "l";
     }
   }
+
+  void _suma(String fijo, String corrido) {
+    int f = int.parse(fijo);
+    int c = int.parse(corrido);
+    int res = f + c;
+    control.sumarApuesta(res);
+  }
+
+  /* void _validarReglas() {
+    if (int.parse(fijo) > control.limiteFijo.value) {
+      mostrarAlerta(context,
+          "Verifique las reglas, el fijo esta limitado en esta jornada");
+      fijo = "";
+    } else {
+      fijos.add(fijo);
+    }
+  } */
 }

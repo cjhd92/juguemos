@@ -5,7 +5,7 @@ void mostrarAlerta(BuildContext context, String mensaje) {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text("Informacion icorrecta"),
+          title: Text("Alerta !!"),
           content: Text(mensaje),
           actions: <Widget>[
             FlatButton(

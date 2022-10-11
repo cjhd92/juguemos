@@ -4,6 +4,19 @@ import 'package:get/get.dart';
 class Crontrol extends GetxController {
   var userName = "".obs;
   var userPass = "".obs;
+  var sumaTotal = 0.obs;
+
+  List<int> number = <int>[].obs;
+  List<int> corrido = <int>[].obs;
+  List<int> fijo = <int>[].obs;
+  List<int> numberP1 = <int>[].obs;
+  List<int> numberP2 = <int>[].obs;
+  List<int> betP = <int>[].obs;
+
+/*   var limiteFijo = 0.obs;
+  var limiteCorrido = "".obs;
+  var limiteCentena = "".obs;
+  var limiteParle = "".obs; */
 
 /*     Map<String, RxString> jugadaSimple = {
     
@@ -48,5 +61,51 @@ class Crontrol extends GetxController {
 
     //print(listaSinConexion);
     //print(listaSinConexion.length);
+  }
+
+/*   getlimiteFijo(lf) {
+    limiteFijo = lf;
+  } */
+
+  setnumber(numero) {
+    number.add(int.parse(numero));
+    /* print("lista de numeros ${number}"); */
+  }
+
+  setfijo(f) {
+    fijo.add(int.parse(f));
+    /*  print("lista de los fijo ${fijo}"); */
+  }
+
+  setcorrido(c) {
+    corrido.add(int.parse(c));
+    /*  print("lista de los corrido ${corrido}") */;
+  }
+
+  setParle(np1, np2, b) {
+    numberP1.add(int.parse(np1));
+    numberP2.add(int.parse(np2));
+    betP.add(int.parse(b));
+  }
+
+  sumarApuesta(int suma) {
+/*     int totalSumaFijo = 2;
+    int totalSumaCorrido = 3; */
+
+    if (number.isNotEmpty) {
+/*       for (int f = 0; f <= fijo.length; f++) {
+        totalSumaFijo = fijo[f] + totalSumaFijo;
+        print(totalSumaFijo);
+      } */
+
+      /*   for (int c = 0; c <= corrido.length; c++) {
+        totalSumaCorrido = int.parse(corrido[c]) + totalSumaCorrido;
+      }
+ */
+      sumaTotal.value = sumaTotal.value + suma;
+      /* suma.value = totalSumaFijo + totalSumaCorrido; */
+    } else {
+      sumaTotal.value = 0;
+    }
   }
 }

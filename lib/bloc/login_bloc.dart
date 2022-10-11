@@ -24,7 +24,7 @@ class LoginBloc {
   String get password => _passwordController.value; */
 
   dispose() {
-    _emailController?.close();
-    _passwordController?.close();
+    _emailController.close();
+    _passwordController.close();
   }
 }

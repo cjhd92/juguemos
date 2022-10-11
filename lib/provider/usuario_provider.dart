@@ -4,11 +4,17 @@ import 'package:http/http.dart' as http;
 
 class UsuarioProvider {
   Future login(String username, String password) async {
-    var httpsUri = Uri(
+    /*    var httpsUri = Uri(
       scheme: 'http',
       host: '152.206.118.224',
       path: 'auth/get_user_token',
-      //queryParameters: {'search': 'blue', 'limit': '10'}
+   
+    ); */
+
+    var httpsUri = Uri(
+      scheme: 'https',
+      host: 'srv224118-206152.vps.etecsa.cu',
+      path: 'auth/get_user_token',
     );
 
 /*     final authData = {
