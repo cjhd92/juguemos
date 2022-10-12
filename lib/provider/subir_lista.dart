@@ -2,11 +2,11 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'dart:io';
 
-class SubirFijoCorrido {
+class SubirLista {
   String token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imxpc3Rlcm9fcHJ1ZWJhIiwic3ViIjoiYzcwNGRlMDItYzRmZS00YWI3LTkxZDgtNjZkMWVhNmE1YTM0IiwidHlwZSI6ImFjY2VzcyIsImV4cCI6MTY2NTQ2MzQzMiwiaWF0IjoxNjY1NDU5ODMyLCJqdGkiOiI5YzJjNjUyMC1hYWRmLTRiY2ItODI4MS0yMWNmNmRlYWJlYWIifQ.yZrsYfuDQpC9GQdsJRrEIz6W0BWBTrYlhH9uugltMMk";
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imxpc3Rlcm9fcHJ1ZWJhIiwic3ViIjoiYzcwNGRlMDItYzRmZS00YWI3LTkxZDgtNjZkMWVhNmE1YTM0IiwidHlwZSI6ImFjY2VzcyIsImV4cCI6MTY2NTU1MDQ5NSwiaWF0IjoxNjY1NTQ2ODk1LCJqdGkiOiJlZmJhOGNlYS1kYTMxLTQ2N2UtYjcyOC03YTg1NThjYmVlMDAifQ.vPvxUMepdbpOCM4b6BpJ8taeHKJGth77OJ2G3hNFJu4";
 
-  Future fijo_corrido(n, f, c) async {
+  Future fijo_corrido(id, n, f, c) async {
     /* var httpsUri = Uri(
       scheme: 'http',
       host: '152.206.118.224',
@@ -19,13 +19,6 @@ class SubirFijoCorrido {
       path: 'bets/fijo_corrido',
     );
 
-    /*   Map<String, List<int>> data = {
-      "idem_pk": [],
-      "number": [2, 8],
-      "corrido": [3, 9],
-      "fijo": [4, 8],
-    }; */
-
     Map<String, List<int>> data = {
       "idem_pk": [],
       "number": [],
@@ -34,7 +27,7 @@ class SubirFijoCorrido {
     };
 
     data.addAll({
-      "idem_pk": n,
+      "idem_pk": id,
       "number": n,
       "corrido": c,
       "fijo": f,
@@ -66,21 +59,50 @@ class SubirFijoCorrido {
       },
     );
 
-    print('la respuesta ${json.decode(resp.body)}');
-    print('la respuesta ${(resp.statusCode)}');
+    //  print('la respuesta fijo_corrido ${json.decode(resp.body)}');
+    print('la respuesta fijo_corrido ${(resp.statusCode)}');
+  }
 
-    /*  Map<String, dynamic> decodedResp = json.decode(resp.body);
-    print(decodedResp);
-    print(decodedResp); */
+  Future subir_parle(id, b, n1, n2) async {
+    var httpsUri = Uri(
+      scheme: 'https',
+      host: 'srv224118-206152.vps.etecsa.cu',
+      path: 'bets/parle',
+    );
 
-    /*   print("eeeeeee");
-    print(json.decode(resp.body).toString()); */
+    Map<String, List<int>> data = {
+      "idem_pk": [],
+      "bet": [],
+      "number1": [],
+      "number2": [],
+    };
 
-    /*  var decodedResp = json.decode(resp.body);
-    print("mi respuestaaaaaa");
-    print(decodedResp); */
+    data.addAll({
+      "idem_pk": id,
+      "bet": b,
+      "number1": n1,
+      "number2": n2,
+    });
 
-    /* print(Data);
-    print(json.encode(Data)); */
+    print("la data del parle");
+    print(data);
+
+    final resp = await http.post(
+      httpsUri,
+      body: jsonEncode(data),
+      headers: {
+        "Accept": "application/json",
+        "Authorization": "Bearer ${token}",
+        "Content-Type": "application/json"
+      },
+    );
+    print('la respuesta parle ${(resp.statusCode)}');
+
+    /*   if (resp.statusCode == "200") {
+      print('la respuesta parle ${json.decode(resp.body)}');
+      print('la respuesta parle ${(resp.statusCode)}');
+    } else {
+      print("no es 200");
+    } */
   }
 }

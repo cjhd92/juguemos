@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 
 class RulesProvider {
   String token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imxpc3Rlcm9fcHJ1ZWJhIiwic3ViIjoiYzcwNGRlMDItYzRmZS00YWI3LTkxZDgtNjZkMWVhNmE1YTM0IiwidHlwZSI6ImFjY2VzcyIsImV4cCI6MTY2NTQ2MzQzMiwiaWF0IjoxNjY1NDU5ODMyLCJqdGkiOiI5YzJjNjUyMC1hYWRmLTRiY2ItODI4MS0yMWNmNmRlYWJlYWIifQ.yZrsYfuDQpC9GQdsJRrEIz6W0BWBTrYlhH9uugltMMk";
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imxpc3Rlcm9fcHJ1ZWJhIiwic3ViIjoiYzcwNGRlMDItYzRmZS00YWI3LTkxZDgtNjZkMWVhNmE1YTM0IiwidHlwZSI6ImFjY2VzcyIsImV4cCI6MTY2NTU1MDQ5NSwiaWF0IjoxNjY1NTQ2ODk1LCJqdGkiOiJlZmJhOGNlYS1kYTMxLTQ2N2UtYjcyOC03YTg1NThjYmVlMDAifQ.vPvxUMepdbpOCM4b6BpJ8taeHKJGth77OJ2G3hNFJu4";
 
   /* String token = 'g7d6tbw86qt84f.qfi4itbf6c4t67.f436bf7fybwe98t7';
   String header = 'Bearer '; */

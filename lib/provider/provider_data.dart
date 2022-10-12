@@ -12,6 +12,8 @@ class Crontrol extends GetxController {
   List<int> numberP1 = <int>[].obs;
   List<int> numberP2 = <int>[].obs;
   List<int> betP = <int>[].obs;
+  List<String> selecjugada = <String>[].obs;
+  List<int> idem_pk = <int>[].obs;
 
 /*   var limiteFijo = 0.obs;
   var limiteCorrido = "".obs;
@@ -25,17 +27,17 @@ class Crontrol extends GetxController {
     "corrido": "".obs
   }; */
 
-/*   Map<String, List<String>> listaSinConexion = {
+  Map<String, List<String>> listaSinConexion = {
     "1": ["s", "22", "50", "30"].obs,
     "2": ["c", "11", "21", "31"].obs,
     "3": ["c", "15", "2", "35"].obs,
-  }; */
+  };
 
-  Map<String, List<String>> listaSinConexion = {
+/*   Map<String, List<String>> listaSinConexion = {
     "numeros": ["22", "23", "24"].obs,
     "fijos": ["11", "12", "13"].obs,
     "corridos": ["15", "2", "35"].obs,
-  };
+  }; */
 
   getUser(String name) {
     userName.value = name;
@@ -66,6 +68,15 @@ class Crontrol extends GetxController {
 /*   getlimiteFijo(lf) {
     limiteFijo = lf;
   } */
+
+  setSelecJugada(String letra) {
+    selecjugada.add(letra);
+    print(selecjugada);
+  }
+
+  setIdemPk(int ik) {
+    idem_pk.add(ik);
+  }
 
   setnumber(numero) {
     number.add(int.parse(numero));

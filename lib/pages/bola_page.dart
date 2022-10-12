@@ -18,6 +18,7 @@ class _BolaState extends State<Bola> {
   String number = "";
   String fijo = "";
   String corrido = "";
+  int idem_pk = 10000;
 
   bool selecN = false;
   bool selecF = false;
@@ -544,11 +545,12 @@ class _BolaState extends State<Bola> {
                       /*   print("numero añadido ${number}");
                       print("fijo añadido ${fijo}");
                       print("corrrido añadido ${corrido}"); */
-
+                      control.setIdemPk(idem_pk + control.idem_pk.length);
                       control.setnumber(number);
                       control.setfijo(fijo);
                       control.setcorrido(corrido);
                       _suma(fijo, corrido);
+                      control.setSelecJugada("s");
 
                       /* fijos.add(fijo);
                       corridos.add(corrido); */

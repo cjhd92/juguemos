@@ -3,6 +3,7 @@ import 'package:flutter_application_1/pages/cambiar_user_page.dart';
 import 'package:flutter_application_1/provider/provider_data.dart';
 import 'package:flutter_application_1/provider/subir_lista.dart';
 import 'package:get/get.dart';
+import 'dart:async';
 
 class NoEnv extends StatefulWidget {
   const NoEnv({super.key});
@@ -18,6 +19,9 @@ class _NoEnvState extends State<NoEnv> {
   String number = "";
   String fijo = "";
   String corrido = "";
+
+  int s = -1;
+  int p = -1;
 
   final control = Get.find<Crontrol>();
 
@@ -135,16 +139,17 @@ class _NoEnvState extends State<NoEnv> {
         width: double.infinity,
         height: _screenSize.height * 0.76,
         child: ListView.builder(
-          itemCount: 2,
+          itemCount: control.selecjugada.length,
           //itemCount: control.number.length,
           itemBuilder: (BuildContext context, int index) {
-            return _jugadasCompuesta(index);
+            //return _combinarJugada(index);
+            return _jugadas(index);
             //return Text("h");
           },
         ));
   }
 
-  Widget _jugadasSimpel(int index) {
+  Widget _jugadasSimpel(int s) {
     //print(index);
     //control.sumarApuesta();
     /*  if (control.number[index].toString().length == 1) {
@@ -158,7 +163,7 @@ class _NoEnvState extends State<NoEnv> {
       child: Row(
         children: <Widget>[
           Text(
-            control.number[index].toString(),
+            control.number[s].toString(),
             style: TextStyle(
                 color: Colors.black, fontWeight: FontWeight.bold, fontSize: 25),
           ),
@@ -180,7 +185,7 @@ class _NoEnvState extends State<NoEnv> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  control.fijo[index].toString(),
+                  control.fijo[s].toString(),
                 ),
               ],
             ),
@@ -203,7 +208,7 @@ class _NoEnvState extends State<NoEnv> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  control.corrido[index].toString(),
+                  control.corrido[s].toString(),
                 ),
               ],
             ),
@@ -213,7 +218,7 @@ class _NoEnvState extends State<NoEnv> {
     );
   }
 
-  Widget _jugadasCompuesta(int index) {
+  Widget _jugadasCompuesta(int p) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       width: double.infinity,
@@ -222,14 +227,14 @@ class _NoEnvState extends State<NoEnv> {
           Column(
             children: [
               Text(
-                control.numberP1[index].toString(),
+                control.numberP1[p].toString(),
                 style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
                     fontSize: 25),
               ),
               Text(
-                control.numberP2[index].toString(),
+                control.numberP2[p].toString(),
                 style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
@@ -248,7 +253,7 @@ class _NoEnvState extends State<NoEnv> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(control.betP[index].toString()),
+                Text(control.betP[p].toString()),
               ],
             ),
           ),
@@ -257,7 +262,7 @@ class _NoEnvState extends State<NoEnv> {
     );
   }
 
-  cargar_datos() {
+  /*  cargar_datos() {
     int ver = control.listaSinConexion.length;
     List<List<String>> valor = [];
     var tipoJugada;
@@ -298,36 +303,43 @@ class _NoEnvState extends State<NoEnv> {
     }
 
     // print(ll[0]);
-  }
+  } */
 
   void _subir() {
-    print("sube");
-    SubirFijoCorrido()
-        .fijo_corrido(control.number, control.fijo, control.corrido);
+    print("sube...");
+
+    SubirLista().fijo_corrido(
+        control.idem_pk, control.number, control.fijo, control.corrido);
+
+    SubirLista().subir_parle(
+        control.idem_pk, control.betP, control.numberP1, control.numberP2);
   }
 
-  /*  Widget _jugadas(int index) {
-    index++;
-    List<List<String>> valor = [];
-    var tipoJugada;
-    var datos = control.listaSinConexion;
-    tipoJugada = datos[index.toString()];
-    print("jugadas  ${tipoJugada[0]}");
+  Widget _combinarJugada(int index) {
+    if (control.selecjugada[index] == "s") {
+      s++;
+      return _jugadasSimpel(s);
+    } else {
+      p++;
+      return _jugadasCompuesta(p);
+    }
+  }
 
+  Widget _jugadas(int index) {
     if (index % 2 == 0) {
       return Container(
           width: double.infinity,
-          height: 80,
+          height: 120,
           color: Color.fromRGBO(33, 150, 243, 0.1),
-          child: _selectJugada(tipoJugada));
+          child: _combinarJugada(index));
     } else {
       return Container(
           width: double.infinity,
-          height: 80,
+          height: 120,
           color: Colors.white,
-          child: _selectJugada(tipoJugada));
+          child: _combinarJugada(index));
     }
-  } */
+  }
 
   /* Widget _selectJugada(tipoJugada) {
     if (tipoJugada[0] == "s") {

@@ -19,6 +19,7 @@ bool selecN1 = false;
 bool selecN2 = false;
 bool selecJ = false;
 
+int idem_pk = 10000;
 final control = Get.find<Crontrol>();
 
 class _ParleState extends State<Parle> {
@@ -491,6 +492,8 @@ class _ParleState extends State<Parle> {
             onPressed: habilitarBtn()
                 ? () {
                     setState(() {
+                      control.setSelecJugada("p");
+                      control.setIdemPk(idem_pk + control.idem_pk.length);
                       control.setParle(number1, number2, jugada);
                       _reset();
                     });
