@@ -550,8 +550,21 @@ class _BolaState extends State<Bola> {
                       control.setIdemPks(control.id_pk.value);
 
                       control.setnumber(number);
-                      control.setfijo(fijo);
-                      control.setcorrido(corrido);
+
+                      if (fijo.length == 0) {
+                        control.setfijo("0");
+                        fijo = "0";
+                      } else {
+                        control.setfijo(fijo);
+                      }
+
+                      if (corrido.length == 0) {
+                        control.setcorrido("0");
+                        corrido = "0";
+                      } else {
+                        control.setcorrido(corrido);
+                      }
+
                       _suma(fijo, corrido);
                       control.setSelecJugada("s");
 
