@@ -309,10 +309,10 @@ class _NoEnvState extends State<NoEnv> {
     print("sube...");
 
     SubirLista().fijo_corrido(
-        control.idem_pk, control.number, control.fijo, control.corrido);
+        control.idem_pks, control.number, control.fijo, control.corrido);
 
     SubirLista().subir_parle(
-        control.idem_pk, control.betP, control.numberP1, control.numberP2);
+        control.idem_pkp, control.betP, control.numberP1, control.numberP2);
   }
 
   Widget _combinarJugada(int index) {

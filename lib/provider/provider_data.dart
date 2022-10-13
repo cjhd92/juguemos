@@ -5,6 +5,7 @@ class Crontrol extends GetxController {
   var userName = "".obs;
   var userPass = "".obs;
   var sumaTotal = 0.obs;
+  var id_pk = 10000.obs;
 
   List<int> number = <int>[].obs;
   List<int> corrido = <int>[].obs;
@@ -13,7 +14,8 @@ class Crontrol extends GetxController {
   List<int> numberP2 = <int>[].obs;
   List<int> betP = <int>[].obs;
   List<String> selecjugada = <String>[].obs;
-  List<int> idem_pk = <int>[].obs;
+  List<int> idem_pks = <int>[].obs;
+  List<int> idem_pkp = <int>[].obs;
 
 /*   var limiteFijo = 0.obs;
   var limiteCorrido = "".obs;
@@ -74,8 +76,12 @@ class Crontrol extends GetxController {
     print(selecjugada);
   }
 
-  setIdemPk(int ik) {
-    idem_pk.add(ik);
+  setIdemPks(int ik) {
+    idem_pks.add(ik);
+  }
+
+  setIdemPkp(int ik) {
+    idem_pkp.add(ik);
   }
 
   setnumber(numero) {

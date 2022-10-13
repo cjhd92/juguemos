@@ -545,7 +545,10 @@ class _BolaState extends State<Bola> {
                       /*   print("numero añadido ${number}");
                       print("fijo añadido ${fijo}");
                       print("corrrido añadido ${corrido}"); */
-                      control.setIdemPk(idem_pk + control.idem_pk.length);
+                      control.id_pk.value++;
+
+                      control.setIdemPks(control.id_pk.value);
+
                       control.setnumber(number);
                       control.setfijo(fijo);
                       control.setcorrido(corrido);

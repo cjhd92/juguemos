@@ -4,7 +4,7 @@ import 'dart:io';
 
 class SubirLista {
   String token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imxpc3Rlcm9fcHJ1ZWJhIiwic3ViIjoiYzcwNGRlMDItYzRmZS00YWI3LTkxZDgtNjZkMWVhNmE1YTM0IiwidHlwZSI6ImFjY2VzcyIsImV4cCI6MTY2NTU1MDQ5NSwiaWF0IjoxNjY1NTQ2ODk1LCJqdGkiOiJlZmJhOGNlYS1kYTMxLTQ2N2UtYjcyOC03YTg1NThjYmVlMDAifQ.vPvxUMepdbpOCM4b6BpJ8taeHKJGth77OJ2G3hNFJu4";
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imxpc3Rlcm9fcHJ1ZWJhIiwic3ViIjoiYzcwNGRlMDItYzRmZS00YWI3LTkxZDgtNjZkMWVhNmE1YTM0IiwidHlwZSI6ImFjY2VzcyIsImV4cCI6MTY2NTYzMDk4MywiaWF0IjoxNjY1NjI3MzgzLCJqdGkiOiJkOTgxNmE1MC0xZDlmLTRkNGUtYTg5Ni0xYTM4ZDI2MzE2YzYifQ.k3nkUDxEQIkRWz9dRnsmy0J3LmQZeg0M9mn5K8mp-bA";
 
   Future fijo_corrido(id, n, f, c) async {
     /* var httpsUri = Uri(
@@ -32,7 +32,7 @@ class SubirLista {
       "corrido": c,
       "fijo": f,
     });
-    /*   var data = {
+/*     Map<String, List<int>> data = {
       "idem_pk": [1, 5],
       "number": [2, 8],
       "corrido": [3, 9],
@@ -59,11 +59,12 @@ class SubirLista {
       },
     );
 
-    //  print('la respuesta fijo_corrido ${json.decode(resp.body)}');
+    print('la respuesta fijo_corrido ${json.decode(resp.body)}');
     print('la respuesta fijo_corrido ${(resp.statusCode)}');
   }
 
-  Future subir_parle(id, b, n1, n2) async {
+  Future subir_parle(
+      List<int> id, List<int> b, List<int> n1, List<int> n2) async {
     var httpsUri = Uri(
       scheme: 'https',
       host: 'srv224118-206152.vps.etecsa.cu',
@@ -96,6 +97,7 @@ class SubirLista {
         "Content-Type": "application/json"
       },
     );
+    print('la respuesta parle ${json.decode(resp.body)}');
     print('la respuesta parle ${(resp.statusCode)}');
 
     /*   if (resp.statusCode == "200") {

@@ -493,7 +493,10 @@ class _ParleState extends State<Parle> {
                 ? () {
                     setState(() {
                       control.setSelecJugada("p");
-                      control.setIdemPk(idem_pk + control.idem_pk.length);
+
+                      control.id_pk.value++;
+                      control.setIdemPkp(control.id_pk.value);
+
                       control.setParle(number1, number2, jugada);
                       _reset();
                     });
