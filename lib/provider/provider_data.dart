@@ -29,11 +29,11 @@ class Crontrol extends GetxController {
     "corrido": "".obs
   }; */
 
-  Map<String, List<String>> listaSinConexion = {
+/*   Map<String, List<String>> listaSinConexion = {
     "1": ["s", "22", "50", "30"].obs,
     "2": ["c", "11", "21", "31"].obs,
     "3": ["c", "15", "2", "35"].obs,
-  };
+  }; */
 
 /*   Map<String, List<String>> listaSinConexion = {
     "numeros": ["22", "23", "24"].obs,

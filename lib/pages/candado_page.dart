@@ -479,9 +479,6 @@ class _CandadoState extends State<Candado> {
         case 0:
           if (candado[item].length < 2) {
             candado[item] = candado[item] + btn;
-            //candado[item] = number;
-            /*  listaLLena.add(candado[item]);
-            print("hhh ${listaLLena}"); */
           }
 
           break;

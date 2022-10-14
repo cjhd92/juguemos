@@ -109,7 +109,7 @@ class _LoginPageState extends State<LoginPage> {
                 height: 10.0,
                 width: double.infinity,
               ),
-              Text("Bienvenido a ListDiditalT",
+              Text("Bienvenido a ListDidital",
                   style: TextStyle(color: Colors.white, fontSize: 25.0))
             ],
           ),
