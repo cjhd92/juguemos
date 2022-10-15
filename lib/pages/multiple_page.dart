@@ -44,7 +44,7 @@ class _MultipleState extends State<Multiple> {
           children: [
             IconButton(
               onPressed: () {
-                Navigator.pushReplacementNamed(context, "/");
+                Navigator.pushReplacementNamed(context, "home");
               },
               icon: Icon(
                 Icons.arrow_back_ios,
@@ -63,6 +63,14 @@ class _MultipleState extends State<Multiple> {
           child: Column(
             children: <Widget>[
               SizedBox(height: 20),
+              Text(
+                "Jugar Multiple",
+                style: TextStyle(
+                    color: Color.fromRGBO(33, 150, 243, 1),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20),
+              ),
+              SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -96,7 +104,12 @@ class _MultipleState extends State<Multiple> {
                           );
                         },
                       )),
-                  inputCircularCandado(),
+                  Column(
+                    children: [
+                      _texto("Candado"),
+                      inputCircularCandado(),
+                    ],
+                  ),
                 ],
               ),
               SizedBox(height: 20),

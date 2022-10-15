@@ -37,7 +37,7 @@ class _CentenaState extends State<Centena> {
                 color: Colors.white,
               ),
             ),
-            Obx((() => Text(" ListDigital  (${control.userName})"))),
+            Obx((() => Text(" ListDigital  ${control.userName}"))),
           ],
         ),
       ),
@@ -461,7 +461,7 @@ class _CentenaState extends State<Centena> {
   }
 
   void _selecBtn(String btn) {
-    if (selecC && centena.length < 2) {
+    if (selecC && centena.length < 3) {
       centena = centena + btn;
     } else {
       print("numero supera mas de dos digitos $centena");

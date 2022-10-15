@@ -40,7 +40,7 @@ class _DecenaState extends State<Decena> {
                 color: Colors.white,
               ),
             ),
-            Obx((() => Text(" ListDigital  (${control.userName})"))),
+            Obx((() => Text(" ListDigital  ${control.userName}"))),
           ],
         ),
       ),

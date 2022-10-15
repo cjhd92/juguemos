@@ -210,7 +210,7 @@ class HomePage extends StatelessWidget {
                                 "Limita la parle del dia y la noche: El parle a ${snapshot.data["parle_limited_pay"]} ",
                                 Icon(Icons.label_important_outlined),
                                 context,
-                                "limitarP"),
+                                "limitarB"),
                             SizedBox(height: 15.0),
                           ],
                         ),

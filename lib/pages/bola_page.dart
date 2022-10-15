@@ -60,7 +60,7 @@ class _BolaState extends State<Bola> {
                 color: Colors.white,
               ),
             ),
-            Obx((() => Text(" ListDigital  (${control.userName})"))),
+            Obx((() => Text(" ListDigital  ${control.userName}"))),
           ],
         ),
       ),
@@ -68,6 +68,18 @@ class _BolaState extends State<Bola> {
         child: Column(
           children: [
             SizedBox(height: 20.0),
+            Text(
+              "Jugar Bola",
+              style: TextStyle(
+                  color: Color.fromRGBO(33, 150, 243, 1),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20),
+            ),
+            Text(
+              "Juega tu número preferido fijo o corrido",
+              style: TextStyle(color: Color.fromRGBO(33, 150, 243, 0.8)),
+            ),
+            SizedBox(height: 10.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

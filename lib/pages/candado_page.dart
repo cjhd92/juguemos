@@ -44,61 +44,69 @@ class _CandadoState extends State<Candado> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-        appBar: AppBar(
-          title: Row(
-            children: [
-              IconButton(
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, "home");
-                },
-                icon: Icon(
-                  Icons.arrow_back_ios,
-                  size: 15,
-                  color: Colors.white,
-                ),
+      appBar: AppBar(
+        title: Row(
+          children: [
+            IconButton(
+              onPressed: () {
+                Navigator.pushReplacementNamed(context, "home");
+              },
+              icon: Icon(
+                Icons.arrow_back_ios,
+                size: 15,
+                color: Colors.white,
               ),
-              Obx((() => Text(" ListDigital  (${control.userName})"))),
-            ],
-          ),
+            ),
+            Obx((() => Text(" ListDigital ${control.userName}"))),
+          ],
         ),
-        body: Container(
-            width: double.infinity,
-            height: double.infinity,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                SizedBox(
-                  height: 15,
-                ),
-                Text("Jugar en candado"),
-                SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    icono(),
-                    SizedBox(width: 10),
-                    Container(
-                        color: Colors.black12,
-                        height: size.height * 0.25,
-                        width: size.width * 0.25,
-                        child: ListView.builder(
-                          itemCount: 20,
-                          itemBuilder: (BuildContext context, int index) {
-                            return inputCircularCandado(index);
-                          },
-                        )),
-                    SizedBox(width: 15),
-                    inputCircularApuesta(),
-                  ],
-                ),
-                SizedBox(
-                  height: 25,
-                ),
-                _teclado()
-              ],
-            )));
+      ),
+      body: Container(
+          width: double.infinity,
+          height: double.infinity,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(
+                height: 15,
+              ),
+              Text(
+                "Jugar Candado",
+                style: TextStyle(
+                    color: Color.fromRGBO(33, 150, 243, 1),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  icono(),
+                  SizedBox(width: 10),
+                  Container(
+                      color: Colors.black12,
+                      height: size.height * 0.25,
+                      width: size.width * 0.25,
+                      child: ListView.builder(
+                        itemCount: 20,
+                        itemBuilder: (BuildContext context, int index) {
+                          return inputCircularCandado(index);
+                        },
+                      )),
+                  SizedBox(width: 15),
+                  inputCircularApuesta(),
+                ],
+              ),
+              SizedBox(
+                height: 25,
+              ),
+              _teclado()
+            ],
+          )),
+      floatingActionButton: _crearBotones(context),
+    );
   }
 
   Widget inputCircularApuesta() {
@@ -876,5 +884,32 @@ class _CandadoState extends State<Candado> {
 
     selecC = false;
     selecA = false; */
+  }
+
+  Widget _crearBotones(BuildContext context) {
+    return RaisedButton(
+        child: Container(
+          //padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 12.0),
+          child: Container(
+            width: 100.0,
+            height: 39.0,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Icon(Icons.monetization_on_sharp),
+                //Text(control.sumarApuesta().toString()),
+                Text(control.sumaTotal.toString() + ".0"),
+              ],
+            ),
+          ),
+        ),
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(22.0)),
+        elevation: 0.0,
+        color: Colors.blue,
+        textColor: Colors.white,
+        onPressed: () {
+          Navigator.pushReplacementNamed(context, 'noEnv');
+        });
   }
 }

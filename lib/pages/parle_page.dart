@@ -41,7 +41,7 @@ class _ParleState extends State<Parle> {
                 color: Colors.white,
               ),
             ),
-            Obx((() => Text(" ListDigital  (${control.userName})"))),
+            Obx((() => Text(" ListDigital  ${control.userName}"))),
           ],
         ),
       ),
@@ -498,6 +498,7 @@ class _ParleState extends State<Parle> {
                       control.setIdemPkp(control.id_pk.value);
 
                       control.setParle(number1, number2, jugada);
+                      control.sumarApuesta(int.parse(jugada));
                       _reset();
                     });
                   }
@@ -579,7 +580,7 @@ class _ParleState extends State<Parle> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Icon(Icons.monetization_on_sharp),
-                Text('8500.00'),
+                Text(control.sumaTotal.toString() + ".0"),
               ],
             ),
           ),

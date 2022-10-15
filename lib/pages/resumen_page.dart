@@ -30,7 +30,7 @@ class _ResumenState extends State<Resumen> {
           children: [
             IconButton(
               onPressed: () {
-                Navigator.pushReplacementNamed(context, "/");
+                Navigator.pushReplacementNamed(context, "home");
               },
               icon: Icon(
                 Icons.arrow_back_ios,
@@ -92,7 +92,6 @@ class _ResumenState extends State<Resumen> {
                         DropdownMenuItem(
                             child: Text(
                               "Dia",
-                              style: TextStyle(color: Colors.white),
                             ),
                             value: 1),
                         DropdownMenuItem(child: Text("Noche"), value: 2)

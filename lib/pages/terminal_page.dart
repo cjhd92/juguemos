@@ -40,7 +40,7 @@ class _TerminalState extends State<Terminal> {
                 color: Colors.white,
               ),
             ),
-            Obx((() => Text(" ListDigital  (${control.userName})"))),
+            Obx((() => Text(" ListDigital  ${control.userName}"))),
           ],
         ),
       ),
